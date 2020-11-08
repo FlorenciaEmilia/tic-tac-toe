@@ -1,0 +1,43 @@
+body {
+  display: block;
+  margin: 0;
+  font-family: "Architects Daughter", cursive;
+}
+.row {
+  display: flex;
+}
+
+.row div,
+.row button {
+  width: 250px;
+  height: 250px;
+  border: 1px solid blue;
+  font-size: 10rem;
+  text-align: center;
+}
+#first-row div,
+#first-row button {
+  background-color: #d2faee;
+}
+
+#second-row div,
+#second-row button {
+  background-color: #f7d2f4;
+}
+
+#third-row div,
+#third-row button {
+  background-color: #cbeaf5;
+}
+
+button {
+  font-family: "Architects Daughter", cursive;
+}
+
+button:disabled {
+  color: #2d2e2e;
+}
+.font {
+  font-size: 10rem;
+  text-align: center;
+}
