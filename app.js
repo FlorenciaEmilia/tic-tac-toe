@@ -13,6 +13,13 @@ const ticTacToeDisplay = [
 ];
 
 let oTimer = null;
+
+const userScoreSelector = document.querySelector("#x-score");
+let userScore = 0;
+
+const computerScoreSelector = document.querySelector("#o-score");
+let computerScore = 0;
+
 function xs(event) {
   event.disabled = true;
   const node = document.createTextNode("x");
@@ -77,6 +84,7 @@ function verticalChecker(letter) {
       alert(letter + " won");
 
       winDisplay(rowIndex);
+      scores(letter);
       //clearTimeout(oTimer)
     }
   }
@@ -95,6 +103,7 @@ function horizontalChecker(letter) {
 
     let horizontalIndexDirections = horizontalIndex.map((x, i) => [x, i]);
     winDisplay(horizontalIndexDirections);
+    scores(letter);
     //clearTimeout(oTimer)
   }
 }
@@ -111,6 +120,7 @@ function diagonalChecker(letter) {
   ].every((x) => x == letter);
   if (firstDiagonal || secondDiagonal) {
     alert(letter + " won");
+    scores(letter);
     if (firstDiagonal) {
       winDisplay([
         [0, 0],
@@ -139,6 +149,16 @@ function winDisplay(indexDirections) {
   myNodeList.forEach((x) => (x.disabled = true));
   winIndexes.forEach((x) => (x.style.color = "red"));
   clearTimeout(oTimer);
+}
+
+function scores(winner) {
+  if (winner == "x") {
+    userScore++;
+  } else {
+    computerScore++;
+  }
+  userScoreSelector.innerHTML = userScore;
+  computerScoreSelector.innerHTML = computerScore;
 }
 
 const myNodeList = document.querySelectorAll(".row button");

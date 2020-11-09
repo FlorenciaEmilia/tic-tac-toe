@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- values are the indexes of tic toe logic nested array -->
@@ -29,23 +33,36 @@
       <div id="thirdRowTwo" value="21"></div>
       <div id="thirdRowThree" value="22"></div>
     </div> -->
+    <h1>Tic Tac Toe</h1>
+    <div class="body-display">
+      <div class="tic-tac-toe">
+        <div id="first-row" class="row">
+          <button id="firstRowOne" value="00"></button>
+          <button id="firstRowTwo" value="01"></button>
+          <button id="firstRowThree" value="02"></button>
+        </div>
 
-    <div id="first-row" class="row">
-      <button id="firstRowOne" value="00"></button>
-      <button id="firstRowTwo" value="01"></button>
-      <button id="firstRowThree" value="02"></button>
-    </div>
+        <div id="second-row" class="row">
+          <button id="secondRowOne" value="10"></button>
+          <button id="secondRowTwo" value="11"></button>
+          <button id="secondRowThree" value="12"></button>
+        </div>
 
-    <div id="second-row" class="row">
-      <button id="secondRowOne" value="10"></button>
-      <button id="secondRowTwo" value="11"></button>
-      <button id="secondRowThree" value="12"></button>
-    </div>
+        <div id="third-row" class="row">
+          <button id="thirdRowOne" value="20"></button>
+          <button id="thirdRowTwo" value="21"></button>
+          <button id="thirdRowThree" value="22"></button>
+        </div>
+      </div>
+      <div class="scores">
+        <div>
+          <h2>Your Score:<span id="x-score">0</span></h2>
+        </div>
 
-    <div id="third-row" class="row">
-      <button id="thirdRowOne" value="20"></button>
-      <button id="thirdRowTwo" value="21"></button>
-      <button id="thirdRowThree" value="22"></button>
+        <div>
+          <h2>Computer Score:<span id="o-score">0</span></h2>
+        </div>
+      </div>
     </div>
 
     <script src="app.js"></script>

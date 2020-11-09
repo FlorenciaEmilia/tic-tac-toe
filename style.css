@@ -1,7 +1,21 @@
 body {
   display: block;
   margin: 0;
-  font-family: "Architects Daughter", cursive;
+}
+
+h2,
+h1 {
+  font-family: "Open Sans", sans-serif;
+}
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+.body-display {
+  display: flex;
+}
+.tic-tac-toe {
+  padding: 0 3em;
 }
 .row {
   display: flex;
@@ -9,11 +23,12 @@ body {
 
 .row div,
 .row button {
-  width: 250px;
-  height: 250px;
+  width: 205px;
+  height: 205px;
   border: 1px solid blue;
   font-size: 10rem;
   text-align: center;
+  font-family: "Architects Daughter", cursive;
 }
 #first-row div,
 #first-row button {
@@ -40,4 +55,8 @@ button:disabled {
 .font {
   font-size: 10rem;
   text-align: center;
+}
+
+.scores {
+  padding: 0 3em;
 }
