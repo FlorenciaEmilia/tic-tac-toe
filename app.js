@@ -23,6 +23,8 @@ function xs(event) {
     .every((i) => i == true);
 
   if (!gameOver) {
+    //Disable everything if is not game over so the user doesn't click while setTimeout acts
+    myNodeList.forEach((x) => (x.disabled = true));
     setTimeout(os, 1000, this.event.target);
   }
   win("x");
@@ -42,6 +44,14 @@ function os(event) {
   oPlace.appendChild(node);
   oPlace.disabled = true;
   win("o");
+
+  for (let i = 0; i < ticTacToe.length; i++) {
+    for (let j = 0; j < ticTacToe[i].length; j++) {
+      if (ticTacToe[i][j] == null) {
+        ticTacToeDisplay[i][0][j].disabled = false;
+      }
+    }
+  }
 }
 
 //Make function to check if there is a winner
@@ -115,13 +125,14 @@ function diagonalChecker(letter) {
 }
 
 function winDisplay(indexDirections) {
-  let nodeList = [];
+  let winIndexes = [];
   for (let i = 0; i < indexDirections.length; i++) {
-    nodeList.push(
+    winIndexes.push(
       ticTacToeDisplay[indexDirections[i][0]][0][indexDirections[i][1]]
     );
   }
-  nodeList.forEach((x) => (x.style.color = "red"));
+  myNodeList.forEach((x) => (x.style.color = "#c9c9c9"));
+  winIndexes.forEach((x) => (x.style.color = "red"));
 }
 
 const myNodeList = document.querySelectorAll(".row button");
