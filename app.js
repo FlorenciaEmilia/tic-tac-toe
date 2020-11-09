@@ -25,18 +25,13 @@ function xs(event) {
   if (!gameOver) {
     setTimeout(os, 1000, this.event.target);
   }
-  verticalChecker("x");
-  horizontalChecker("x");
-  diagonalChecker("x");
-  //win()
+  win("x");
 }
 
 function os(event) {
   const node = document.createTextNode("o");
   let index1 = Math.floor(Math.random() * 3);
   let index2 = Math.floor(Math.random() * 3);
-
-  console.log(ticTacToe);
 
   while (ticTacToe[index1][index2] !== null) {
     index1 = Math.floor(Math.random() * 3);
@@ -46,25 +41,31 @@ function os(event) {
   const oPlace = ticTacToeDisplay[index1][0][index2];
   oPlace.appendChild(node);
   oPlace.disabled = true;
-  verticalChecker("o");
-  horizontalChecker("o");
-  diagonalChecker("o");
+  win("o");
 }
 
 //Make function to check if there is a winner
-function win() {}
+function win(letter) {
+  verticalChecker(letter);
+  horizontalChecker(letter);
+  diagonalChecker(letter);
+}
 
 //Check verticals
 function verticalChecker(letter) {
   for (let i = 0; i < ticTacToe.length; i++) {
     let checker = [];
+    let rowIndex = [];
     for (let j = 0; j < ticTacToe[i].length; j++) {
       if (ticTacToe[j][i] == letter) {
         checker.push(letter);
+        rowIndex.push([j, i]);
       }
     }
     if (checker.length === 3) {
       alert(letter + " won");
+
+      winDisplay(rowIndex);
     }
   }
 }
@@ -72,8 +73,16 @@ function verticalChecker(letter) {
 //Check Horizontal
 function horizontalChecker(letter) {
   let checker = ticTacToe.map((x) => x.every((y) => y == letter));
+
   if (checker.indexOf(true) !== -1) {
     alert(letter + " won");
+    let horizontalIndex = (checker.indexOf(true) + "")
+      .repeat(3)
+      .split("")
+      .map(Number);
+
+    let horizontalIndexDirections = horizontalIndex.map((x, i) => [x, i]);
+    winDisplay(horizontalIndexDirections);
   }
 }
 
@@ -89,11 +98,33 @@ function diagonalChecker(letter) {
   ].every((x) => x == letter);
   if (firstDiagonal || secondDiagonal) {
     alert(letter + " won");
+    if (firstDiagonal) {
+      winDisplay([
+        [0, 0],
+        [1, 1],
+        [2, 2],
+      ]);
+    } else {
+      winDisplay([
+        [0, 2],
+        [1, 1],
+        [2, 0],
+      ]);
+    }
   }
+}
+
+function winDisplay(indexDirections) {
+  let nodeList = [];
+  for (let i = 0; i < indexDirections.length; i++) {
+    nodeList.push(
+      ticTacToeDisplay[indexDirections[i][0]][0][indexDirections[i][1]]
+    );
+  }
+  nodeList.forEach((x) => (x.style.color = "red"));
 }
 
 const myNodeList = document.querySelectorAll(".row button");
 myNodeList.forEach((x) =>
   x.addEventListener("click", (x) => xs(this.event.target))
 );
-console.log(myNodeList);
