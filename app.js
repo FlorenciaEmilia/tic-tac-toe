@@ -12,22 +12,23 @@ const ticTacToeDisplay = [
   [grid.slice(6, 9)],
 ];
 
+let oTimer = null;
 function xs(event) {
   event.disabled = true;
   const node = document.createTextNode("x");
   event.appendChild(node);
   let arrayChange = event.getAttribute("value").split("");
   ticTacToe[+arrayChange[0]][+arrayChange[1]] = "x";
-  let gameOver = ticTacToe
+  let allSlotsTaken = ticTacToe
     .map((x) => x.every((y) => y !== null))
     .every((i) => i == true);
 
-  if (!gameOver) {
+  if (!allSlotsTaken) {
     //Disable everything if is not game over so the user doesn't click while setTimeout acts
     myNodeList.forEach((x) => (x.disabled = true));
-    setTimeout(os, 1000, this.event.target);
+    oTimer = setTimeout(os, 1000, this.event.target);
   }
-  win("x");
+  winChecker("x");
 }
 
 function os(event) {
@@ -43,7 +44,7 @@ function os(event) {
   const oPlace = ticTacToeDisplay[index1][0][index2];
   oPlace.appendChild(node);
   oPlace.disabled = true;
-  win("o");
+  winChecker("o");
 
   for (let i = 0; i < ticTacToe.length; i++) {
     for (let j = 0; j < ticTacToe[i].length; j++) {
@@ -55,7 +56,7 @@ function os(event) {
 }
 
 //Make function to check if there is a winner
-function win(letter) {
+function winChecker(letter) {
   verticalChecker(letter);
   horizontalChecker(letter);
   diagonalChecker(letter);
@@ -76,6 +77,7 @@ function verticalChecker(letter) {
       alert(letter + " won");
 
       winDisplay(rowIndex);
+      //clearTimeout(oTimer)
     }
   }
 }
@@ -93,6 +95,7 @@ function horizontalChecker(letter) {
 
     let horizontalIndexDirections = horizontalIndex.map((x, i) => [x, i]);
     winDisplay(horizontalIndexDirections);
+    //clearTimeout(oTimer)
   }
 }
 
@@ -121,6 +124,7 @@ function diagonalChecker(letter) {
         [2, 0],
       ]);
     }
+    //clearTimeout(oTimer)
   }
 }
 
@@ -132,7 +136,9 @@ function winDisplay(indexDirections) {
     );
   }
   myNodeList.forEach((x) => (x.style.color = "#c9c9c9"));
+  myNodeList.forEach((x) => (x.disabled = true));
   winIndexes.forEach((x) => (x.style.color = "red"));
+  clearTimeout(oTimer);
 }
 
 const myNodeList = document.querySelectorAll(".row button");
