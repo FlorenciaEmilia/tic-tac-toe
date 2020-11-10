@@ -1,4 +1,4 @@
-const ticTacToe = [
+let ticTacToe = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -137,7 +137,8 @@ function diagonalChecker(letter) {
     //clearTimeout(oTimer)
   }
 }
-
+//Set time out after 2 seconds to play again
+let playAgain;
 function winDisplay(indexDirections) {
   let winIndexes = [];
   for (let i = 0; i < indexDirections.length; i++) {
@@ -149,8 +150,21 @@ function winDisplay(indexDirections) {
   myNodeList.forEach((x) => (x.disabled = true));
   winIndexes.forEach((x) => (x.style.color = "red"));
   clearTimeout(oTimer);
+  playAgain = setTimeout(restartGame, 500);
 }
 
+function restartGame() {
+  //CLear all slots
+  myNodeList.forEach((x) => (x.innerText = ""));
+  myNodeList.forEach((x) => (x.style.color = " #2d2e2e"));
+  for (let i = 0; i < ticTacToe.length; i++) {
+    for (let j = 0; j < ticTacToe[i].length; j++) {
+      ticTacToe[i][j] = null;
+    }
+  }
+  myNodeList.forEach((x) => (x.disabled = false));
+  //Clear all ticTacToe Array
+}
 function scores(winner) {
   if (winner == "x") {
     userScore++;
