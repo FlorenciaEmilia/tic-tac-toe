@@ -34,10 +34,13 @@ function xs(event) {
     //Disable everything if is not game over so the user doesn't click while setTimeout acts
     myNodeList.forEach((x) => (x.disabled = true));
     oTimer = setTimeout(os, 1000, this.event.target);
+  } else {
+    playAgain = setTimeout(restartGame, 1500);
   }
   winChecker("x");
 }
-
+//Make algorithm to prevent user winning
+//Make algorithm to win
 function os(event) {
   const node = document.createTextNode("o");
   let index1 = Math.floor(Math.random() * 3);
@@ -146,17 +149,17 @@ function winDisplay(indexDirections) {
       ticTacToeDisplay[indexDirections[i][0]][0][indexDirections[i][1]]
     );
   }
-  myNodeList.forEach((x) => (x.style.color = "#c9c9c9"));
+  myNodeList.forEach((x) => (x.style.color = "#a4aeb0"));
   myNodeList.forEach((x) => (x.disabled = true));
-  winIndexes.forEach((x) => (x.style.color = "red"));
+  winIndexes.forEach((x) => (x.style.color = "#eb2f06"));
   clearTimeout(oTimer);
-  playAgain = setTimeout(restartGame, 500);
+  playAgain = setTimeout(restartGame, 1500);
 }
 
 function restartGame() {
   //CLear all slots
   myNodeList.forEach((x) => (x.innerText = ""));
-  myNodeList.forEach((x) => (x.style.color = " #2d2e2e"));
+  myNodeList.forEach((x) => (x.style.color = " #0a3d62"));
   for (let i = 0; i < ticTacToe.length; i++) {
     for (let j = 0; j < ticTacToe[i].length; j++) {
       ticTacToe[i][j] = null;

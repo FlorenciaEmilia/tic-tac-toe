@@ -1,18 +1,29 @@
 body {
   display: block;
   margin: 0;
+  background-color: #ffdca1;
+  color: #ff9f29;
+  margin: 2em;
+  border: 5px solid #ff9f29;
+  padding: 2em;
+  box-sizing: border-box;
 }
 
-h2,
-h1 {
+h2 {
   font-family: "Open Sans", sans-serif;
 }
 h1 {
+  font-family: "Limelight", cursive;
   text-align: center;
-  text-decoration: underline;
+  font-size: 7em;
+  font-weight: lighter;
+  margin: 0;
+  border-bottom: 5px solid #ff9f29;
 }
 .body-display {
   display: flex;
+  justify-content: center;
+  margin-top: 2em;
 }
 .tic-tac-toe {
   padding: 0 3em;
@@ -23,26 +34,15 @@ h1 {
 
 .row div,
 .row button {
-  width: 205px;
-  height: 205px;
-  border: 1px solid blue;
-  font-size: 10rem;
+  width: 150px;
+  height: 150px;
+  border: none;
+  font-size: 6.5em;
   text-align: center;
+  box-sizing: border-box;
   font-family: "Architects Daughter", cursive;
-}
-#first-row div,
-#first-row button {
-  background-color: #d2faee;
-}
-
-#second-row div,
-#second-row button {
-  background-color: #f7d2f4;
-}
-
-#third-row div,
-#third-row button {
-  background-color: #cbeaf5;
+  border: 5px solid #ff9f29;
+  background-color: #ffdca1;
 }
 
 button {
@@ -50,13 +50,24 @@ button {
 }
 
 button:disabled {
-  color: #2d2e2e;
+  box-sizing: border-box;
+  color: #0a3d62;
 }
 .font {
-  font-size: 10rem;
+  box-sizing: border-box;
   text-align: center;
 }
 
 .scores {
   padding: 0 3em;
+}
+
+.scores h2 {
+  font-family: "PT Serif Caption", serif;
+  letter-spacing: 0.1em;
+}
+
+#x-score,
+#o-score {
+  padding: 0 0.5em;
 }
