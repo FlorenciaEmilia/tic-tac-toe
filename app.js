@@ -43,6 +43,8 @@ function xs(event) {
 //Make algorithm to win
 function os(event) {
   const node = document.createTextNode("o");
+  //Predict a spot that will stop the user from winning
+
   let index1 = Math.floor(Math.random() * 3);
   let index2 = Math.floor(Math.random() * 3);
 
@@ -63,6 +65,14 @@ function os(event) {
       }
     }
   }
+}
+
+//Function defense
+function defense() {
+  //Check the user moves
+  //It only needs 2 out of 3 to win
+  //Predict that win adding a x to the ticTactToe Array
+  //Make a copy of the array OR make sure to not modify the array itself to not cause a bug
 }
 
 //Make function to check if there is a winner
