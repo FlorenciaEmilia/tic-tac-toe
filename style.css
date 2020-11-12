@@ -15,7 +15,7 @@ h2 {
 h1 {
   font-family: "Limelight", cursive;
   text-align: center;
-  font-size: 7em;
+  font-size: 6em;
   font-weight: lighter;
   margin: 0;
   border-bottom: 5px solid #ff9f29;
@@ -23,13 +23,13 @@ h1 {
 .body-display {
   display: flex;
   justify-content: center;
-  margin-top: 2em;
+  margin-top: 4em;
   margin-left: -1.5em;
   flex-direction: column;
   align-content: center;
 }
 .tic-tac-toe {
-  padding: 0 3em;
+  padding: 1em 3em;
   margin: auto;
 }
 .row {
@@ -38,8 +38,8 @@ h1 {
 
 .row div,
 .row button {
-  min-width: 10vw;
-  min-height: 10vw;
+  width: 12vw;
+  height: 12vw;
   border: none;
   font-size: 5vw;
   text-align: center;
@@ -77,9 +77,17 @@ button:disabled {
 }
 
 @media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 7em;
+  }
   .body-display {
     width: 70%;
     flex-direction: row;
     margin: 2em auto 0 auto;
+  }
+
+  .row button {
+    width: 9vw;
+    height: 9vw;
   }
 }
