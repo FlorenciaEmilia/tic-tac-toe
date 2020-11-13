@@ -70,9 +70,63 @@ function os(event) {
 //Function defense
 function defense() {
   //Check the user moves
+  //Check if the user is about to win horizontally
   //It only needs 2 out of 3 to win
   //Predict that win adding a x to the ticTactToe Array
   //Make a copy of the array OR make sure to not modify the array itself to not cause a bug
+}
+
+function moveHorizontal() {
+  for (let i = 0; i < ticTacToe.length; i++) {
+    let amountOfXs = 0;
+    let amountOfOs = 0;
+    for (let j = 0; j < ticTacToe[i].length; j++) {
+      if (ticTacToe[i][j] == "x") {
+        amountOfXs++;
+      } else if (ticTacToe[i][j] == "o") {
+        amountOfOs++;
+      }
+      //beware of bugs
+      if (amountOfXs == 2 || amountOfOs == 2) {
+        if (ticTacToe[i].indexOf(null) != -1) {
+          //MAKE THIS SHOW ON DISPLAY
+          console.log(ticTacToe[i].indexOf(null));
+          ticTacToe[i][ticTacToe[i].indexOf(null)] = "o";
+        }
+      }
+    }
+  }
+}
+
+function moveVertical() {
+  for (let i = 0; i < ticTacToe.length; i++) {
+    let amountOfXs = 0;
+    //let rowIndexXs = [];
+    let amountOfOs = 0;
+    //let rowIndexOs = [];
+    for (let j = 0; j < ticTacToe[i].length; j++) {
+      if (ticTacToe[j][i] == "x") {
+        amountOfXs++;
+        //rowIndexXs.push([j, i]);
+      }
+      if (ticTacToe[j][i] == "o") {
+        amountOfOs++;
+        //rowIndexOs.push([j, i]);
+      }
+    }
+    let mappingCheck = Array.from([0, 1, 2], (x) => [x, i]);
+    //let openSlot = null;
+    let oMove = () => {
+      for (let i = 0; i < mappingCheck.length; i++) {
+        if (ticTacToe[i][mappingCheck[i][1]] == null)
+          ticTacToe[i][mappingCheck[i][1]] = "o";
+      }
+    };
+    if (amountOfOs == 2 || amountOfXs == 2) {
+      //Check for possible bugs
+      return oMove();
+    }
+  }
 }
 
 //Make function to check if there is a winner
