@@ -129,6 +129,29 @@ function moveVertical() {
   }
 }
 
+function moveDiagonal() {
+  let firstDiagonal = [ticTacToe[0][0], ticTacToe[1][1], ticTacToe[2][2]];
+  let secondDiagonal = [ticTacToe[0][2], ticTacToe[1][1], ticTacToe[2][0]];
+  if (
+    (firstDiagonal.indexOf("x") !== firstDiagonal.lastIndexOf("x") &&
+      firstDiagonal.indexOf(null) != -1) ||
+    (firstDiagonal.indexOf("o") !== firstDiagonal.lastIndexOf("o") &&
+      firstDiagonal.indexOf(null) != -1)
+  ) {
+    ticTacToe[firstDiagonal.indexOf(null)][firstDiagonal.indexOf(null)] = "o";
+    return;
+  } else if (
+    (secondDiagonal.indexOf("x") !== secondDiagonal.lastIndexOf("x") &&
+      secondDiagonal.indexOf(null) != -1) ||
+    (secondDiagonal.indexOf("o") !== secondDiagonal.lastIndexOf("o") &&
+      secondDiagonal.indexOf(null) != -1)
+  ) {
+    ticTacToe[secondDiagonal.indexOf(null)][
+      secondDiagonal.length - 1 - secondDiagonal.indexOf(null)
+    ] = "o";
+    return;
+  }
+}
 //Make function to check if there is a winner
 function winChecker(letter) {
   verticalChecker(letter);
