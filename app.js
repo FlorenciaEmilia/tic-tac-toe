@@ -4,7 +4,6 @@ let ticTacToe = [
   [null, null, null],
 ];
 
-// const grid = [...document.querySelectorAll(".row div")];
 const grid = [...document.querySelectorAll(".row button")];
 const ticTacToeDisplay = [
   [grid.slice(0, 3)],
@@ -34,41 +33,14 @@ function xs(event) {
     //Disable everything if is not game over so the user doesn't click while setTimeout acts
     myNodeList.forEach((x) => (x.disabled = true));
     // oTimer = setTimeout(os, 1000, this.event.target);
-    oTimer = setTimeout(osBeta, 1000, this.event.target);
+    oTimer = setTimeout(os, 1000, this.event.target);
   } else {
     playAgain = setTimeout(restartGame, 1500);
   }
   winChecker("x");
 }
-//Make algorithm to prevent user winning
-//Make algorithm to win
-function os(event) {
-  const node = document.createTextNode("o");
-  //Predict a spot that will stop the user from winning
 
-  let index1 = Math.floor(Math.random() * 3);
-  let index2 = Math.floor(Math.random() * 3);
-
-  while (ticTacToe[index1][index2] !== null) {
-    index1 = Math.floor(Math.random() * 3);
-    index2 = Math.floor(Math.random() * 3);
-  }
-  ticTacToe[index1][index2] = "o";
-  const oPlace = ticTacToeDisplay[index1][0][index2];
-  oPlace.appendChild(node);
-  oPlace.disabled = true;
-  winChecker("o");
-  //The defense strategy will be placed somewhere above this line
-  for (let i = 0; i < ticTacToe.length; i++) {
-    for (let j = 0; j < ticTacToe[i].length; j++) {
-      if (ticTacToe[i][j] == null) {
-        ticTacToeDisplay[i][0][j].disabled = false;
-      }
-    }
-  }
-}
-
-function osBeta() {
+function os() {
   //Implement the new defenses one by one
   const node = document.createTextNode("o");
   //Predict a spot that will stop the user from winning
@@ -82,8 +54,10 @@ function osBeta() {
 
   if (moveHorizontalChecker !== undefined) {
     console.log("horizontal condition was used");
+
     index1 = moveHorizontalChecker[0];
     index2 = moveHorizontalChecker[1];
+    console.log([index1, index2]);
   } else if (moveVerticalChecker !== undefined) {
     console.log("vertical condition was used");
     index1 = moveVerticalChecker[0];
@@ -107,7 +81,7 @@ function osBeta() {
   oPlace.appendChild(node);
   oPlace.disabled = true;
   winChecker("o");
-  // //The defense strategy will be placed somewhere above this line
+
   for (let i = 0; i < ticTacToe.length; i++) {
     for (let j = 0; j < ticTacToe[i].length; j++) {
       if (ticTacToe[i][j] == null) {
@@ -127,12 +101,10 @@ function moveHorizontal() {
       } else if (ticTacToe[i][j] == "o") {
         amountOfOs++;
       }
-      //beware of bugs
+
       if (amountOfXs == 2 || amountOfOs == 2) {
         if (ticTacToe[i].indexOf(null) != -1) {
-          //the statement above was where the 'o' was going to get placed
-          //ticTacToe[i][ticTacToe[i].indexOf(null)] = "o";
-          return [ticTacToe[i].indexOf(null), i];
+          return [i, ticTacToe[i].indexOf(null)];
         }
       }
     }
@@ -160,7 +132,6 @@ function moveVertical() {
       mappingCheck = mappingCheck.map((x) => [x, rowIndex]);
       for (let i = 0; i < mappingCheck.length; i++) {
         if (ticTacToe[i][mappingCheck[i][1]] == null) {
-          //ticTacToe[i][mappingCheck[i][1]] = "o";
           return [i, mappingCheck[i][1]];
         }
       }
@@ -177,7 +148,6 @@ function moveDiagonal() {
     (firstDiagonal.indexOf("o") !== firstDiagonal.lastIndexOf("o") &&
       firstDiagonal.indexOf(null) != -1)
   ) {
-    //ticTacToe[firstDiagonal.indexOf(null)][firstDiagonal.indexOf(null)] = "o";
     return [firstDiagonal.indexOf(null), firstDiagonal.indexOf(null)];
   } else if (
     (secondDiagonal.indexOf("x") !== secondDiagonal.lastIndexOf("x") &&
@@ -185,23 +155,19 @@ function moveDiagonal() {
     (secondDiagonal.indexOf("o") !== secondDiagonal.lastIndexOf("o") &&
       secondDiagonal.indexOf(null) != -1)
   ) {
-    // ticTacToe[secondDiagonal.indexOf(null)][
-    //   secondDiagonal.length - 1 - secondDiagonal.indexOf(null)
-    // ] = "o";
     return [
       secondDiagonal.indexOf(null),
       secondDiagonal.length - 1 - secondDiagonal.indexOf(null),
     ];
   }
 }
-//Make function to check if there is a winner
+
 function winChecker(letter) {
   verticalChecker(letter);
   horizontalChecker(letter);
   diagonalChecker(letter);
 }
 
-//Check verticals
 function verticalChecker(letter) {
   for (let i = 0; i < ticTacToe.length; i++) {
     let checker = [];
