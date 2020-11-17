@@ -1,10 +1,15 @@
+:root {
+  --main-color: #d8e6e8;
+  --secondary-color: #1b7380;
+}
+
 body {
   display: block;
   margin: 0;
-  background-color: #ffdca1;
-  color: #ff9f29;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
   margin: 2em;
-  border: 5px solid #ff9f29;
+  border: 5px solid var(--secondary-color);
   padding: 2em;
   box-sizing: border-box;
 }
@@ -18,7 +23,7 @@ h1 {
   font-size: 6em;
   font-weight: lighter;
   margin: 0;
-  border-bottom: 5px solid #ff9f29;
+  border-bottom: 5px solid var(--secondary-color);
 }
 .body-display {
   display: flex;
@@ -44,8 +49,8 @@ h1 {
   font-size: 5vw;
   text-align: center;
   font-family: "Architects Daughter", cursive;
-  border: 5px solid #ff9f29;
-  background-color: #ffdca1;
+  border: 5px solid var(--secondary-color);
+  background-color: var(--main-color);
 }
 
 button {
