@@ -57,7 +57,6 @@ function os() {
 
     index1 = moveHorizontalChecker[0];
     index2 = moveHorizontalChecker[1];
-    console.log([index1, index2]);
   } else if (moveVerticalChecker !== undefined) {
     console.log("vertical condition was used");
     index1 = moveVerticalChecker[0];
@@ -126,23 +125,9 @@ function defenseHorizontal() {
   }
 }
 function moveHorizontal() {
-  for (let i = 0; i < ticTacToe.length; i++) {
-    let amountOfXs = 0;
-    let amountOfOs = 0;
-    for (let j = 0; j < ticTacToe[i].length; j++) {
-      if (ticTacToe[i][j] == "x") {
-        amountOfXs++;
-      } else if (ticTacToe[i][j] == "o") {
-        amountOfOs++;
-      }
-
-      if (amountOfXs == 2 || amountOfOs == 2) {
-        if (ticTacToe[i].indexOf(null) != -1) {
-          return [i, ticTacToe[i].indexOf(null)];
-        }
-      }
-    }
-  }
+  let attack = attackHorizontal();
+  let defense = defenseHorizontal();
+  return attack !== undefined ? attack : defense;
 }
 function attackVertical() {
   for (let i = 0; i < ticTacToe.length; i++) {
@@ -179,7 +164,7 @@ function defenseVertical() {
         rowIndex = i;
       }
     }
-    if (mountOfXs == 2) {
+    if (amountOfXs == 2) {
       mappingCheck = mappingCheck.map((x) => [x, rowIndex]);
       for (let i = 0; i < mappingCheck.length; i++) {
         if (ticTacToe[i][mappingCheck[i][1]] == null) {
@@ -191,31 +176,9 @@ function defenseVertical() {
 }
 
 function moveVertical() {
-  for (let i = 0; i < ticTacToe.length; i++) {
-    let rowIndex;
-    let amountOfXs = 0;
-    let amountOfOs = 0;
-
-    let mappingCheck = Array.from([0, 1, 2]);
-    for (let j = 0; j < ticTacToe[i].length; j++) {
-      if (ticTacToe[j][i] == "x") {
-        amountOfXs++;
-        rowIndex = i;
-      }
-      if (ticTacToe[j][i] == "o") {
-        amountOfOs++;
-        rowIndex = i;
-      }
-    }
-    if (amountOfOs == 2 || amountOfXs == 2) {
-      mappingCheck = mappingCheck.map((x) => [x, rowIndex]);
-      for (let i = 0; i < mappingCheck.length; i++) {
-        if (ticTacToe[i][mappingCheck[i][1]] == null) {
-          return [i, mappingCheck[i][1]];
-        }
-      }
-    }
-  }
+  let attack = attackVertical();
+  let defense = defenseVertical();
+  return attack !== undefined ? attack : defense;
 }
 
 function attackDiagonal() {
@@ -257,26 +220,9 @@ function defenseDiagonal() {
 }
 
 function moveDiagonal() {
-  let firstDiagonal = [ticTacToe[0][0], ticTacToe[1][1], ticTacToe[2][2]];
-  let secondDiagonal = [ticTacToe[0][2], ticTacToe[1][1], ticTacToe[2][0]];
-  if (
-    (firstDiagonal.indexOf("x") !== firstDiagonal.lastIndexOf("x") &&
-      firstDiagonal.indexOf(null) != -1) ||
-    (firstDiagonal.indexOf("o") !== firstDiagonal.lastIndexOf("o") &&
-      firstDiagonal.indexOf(null) != -1)
-  ) {
-    return [firstDiagonal.indexOf(null), firstDiagonal.indexOf(null)];
-  } else if (
-    (secondDiagonal.indexOf("x") !== secondDiagonal.lastIndexOf("x") &&
-      secondDiagonal.indexOf(null) != -1) ||
-    (secondDiagonal.indexOf("o") !== secondDiagonal.lastIndexOf("o") &&
-      secondDiagonal.indexOf(null) != -1)
-  ) {
-    return [
-      secondDiagonal.indexOf(null),
-      secondDiagonal.length - 1 - secondDiagonal.indexOf(null),
-    ];
-  }
+  let attack = attackDiagonal();
+  let defense = defenseDiagonal();
+  return attack !== undefined ? attack : defense;
 }
 
 function winChecker(letter) {
