@@ -89,16 +89,16 @@ function os() {
     }
   }
 }
-//Make a function to create a winning move if possible, and if not defense
-//functions will be attack and defense
-function attackHorizontal() {
+
+function horizontal(letter) {
   for (let i = 0; i < ticTacToe.length; i++) {
-    let amountOfOs = 0;
+    //attack will be try to make 'o' win, defense will try to prevent 'x' from winning
+    let letterCount = 0;
     for (let j = 0; j < ticTacToe[i].length; j++) {
-      if (ticTacToe[i][j] == "o") {
-        amountOfOs++;
+      if (ticTacToe[i][j] == letter) {
+        letterCount++;
       }
-      if (amountOfOs == 2) {
+      if (letterCount == 2) {
         if (ticTacToe[i].indexOf(null) != -1) {
           return [i, ticTacToe[i].indexOf(null)];
         }
@@ -107,22 +107,15 @@ function attackHorizontal() {
   }
 }
 
+function attackHorizontal() {
+  //Attack will always be "o". If a placement of 'o' will make the
+  //computer win then that movement will be chosen
+  return horizontal("o");
+}
+
 function defenseHorizontal() {
-  for (let i = 0; i < ticTacToe.length; i++) {
-    let amountOfXs = 0;
-
-    for (let j = 0; j < ticTacToe[i].length; j++) {
-      if (ticTacToe[i][j] == "x") {
-        amountOfXs++;
-      }
-
-      if (amountOfXs == 2) {
-        if (ticTacToe[i].indexOf(null) != -1) {
-          return [i, ticTacToe[i].indexOf(null)];
-        }
-      }
-    }
-  }
+  //Defense will always be "x". If the computer can't win it will try to set a defense
+  return horizontal("x");
 }
 function moveHorizontal() {
   let attack = attackHorizontal();
