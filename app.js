@@ -145,35 +145,16 @@ function moveVertical() {
   return attack !== undefined ? attack : defense;
 }
 
-function attackDiagonal() {
+function diagonal(letter) {
   let firstDiagonal = [ticTacToe[0][0], ticTacToe[1][1], ticTacToe[2][2]];
   let secondDiagonal = [ticTacToe[0][2], ticTacToe[1][1], ticTacToe[2][0]];
   if (
-    firstDiagonal.indexOf("o") !== firstDiagonal.lastIndexOf("o") &&
+    firstDiagonal.indexOf(letter) !== firstDiagonal.lastIndexOf(letter) &&
     firstDiagonal.indexOf(null) != -1
   ) {
     return [firstDiagonal.indexOf(null), firstDiagonal.indexOf(null)];
   } else if (
-    secondDiagonal.indexOf("o") !== secondDiagonal.lastIndexOf("o") &&
-    secondDiagonal.indexOf(null) != -1
-  ) {
-    return [
-      secondDiagonal.indexOf(null),
-      secondDiagonal.length - 1 - secondDiagonal.indexOf(null),
-    ];
-  }
-}
-
-function defenseDiagonal() {
-  let firstDiagonal = [ticTacToe[0][0], ticTacToe[1][1], ticTacToe[2][2]];
-  let secondDiagonal = [ticTacToe[0][2], ticTacToe[1][1], ticTacToe[2][0]];
-  if (
-    firstDiagonal.indexOf("x") !== firstDiagonal.lastIndexOf("x") &&
-    firstDiagonal.indexOf(null) != -1
-  ) {
-    return [firstDiagonal.indexOf(null), firstDiagonal.indexOf(null)];
-  } else if (
-    secondDiagonal.indexOf("x") !== secondDiagonal.lastIndexOf("x") &&
+    secondDiagonal.indexOf(letter) !== secondDiagonal.lastIndexOf(letter) &&
     secondDiagonal.indexOf(null) != -1
   ) {
     return [
@@ -184,8 +165,8 @@ function defenseDiagonal() {
 }
 
 function moveDiagonal() {
-  let attack = attackDiagonal();
-  let defense = defenseDiagonal();
+  let attack = diagonal("o");
+  let defense = diagonal("x");
   return attack !== undefined ? attack : defense;
 }
 
