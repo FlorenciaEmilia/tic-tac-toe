@@ -107,19 +107,12 @@ function horizontal(letter) {
   }
 }
 
-function attackHorizontal() {
+function moveHorizontal() {
   //Attack will always be "o". If a placement of 'o' will make the
   //computer win then that movement will be chosen
-  return horizontal("o");
-}
-
-function defenseHorizontal() {
   //Defense will always be "x". If the computer can't win it will try to set a defense
-  return horizontal("x");
-}
-function moveHorizontal() {
-  let attack = attackHorizontal();
-  let defense = defenseHorizontal();
+  let attack = horizontal("o");
+  let defense = horizontal("x");
   return attack !== undefined ? attack : defense;
 }
 function attackVertical() {
