@@ -1,6 +1,9 @@
 :root {
   --main-color: #d8e6e8;
   --secondary-color: #1b7380;
+  --third-color: #0a3238;
+  --main-font: "Open Sans", sans-serif;
+  --title-font: "Limelight", cursive;
 }
 
 body {
@@ -15,7 +18,7 @@ body {
 }
 
 h2 {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--main-font);
 }
 h1 {
   font-family: "Limelight", cursive;
@@ -23,7 +26,7 @@ h1 {
   font-size: 6em;
   font-weight: lighter;
   margin: 0;
-  border-bottom: 5px solid var(--secondary-color);
+  border-bottom: 5px solid var(--title-font);
 }
 .body-display {
   display: flex;
@@ -84,19 +87,27 @@ button:disabled {
 #announcement-container {
   position: absolute;
   z-index: 5;
-  margin: 50px;
   width: 25vw;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   height: 15vw;
-  background-color: var(--secondary-color);
-  border: 3px solid seashell;
+  background-color: var(--third-color);
+  border: 3px solid var(--main-color);
 }
 
 #announcement {
   position: relative;
-  color: white;
+  font-family: var(--main-font);
+  letter-spacing: 1px;
+  color: var(--main-color);
   text-align: center;
-  margin-top: 40%;
   word-break: break-all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 
 .hidden {
