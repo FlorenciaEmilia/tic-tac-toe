@@ -81,6 +81,28 @@ button:disabled {
   padding: 0 0.5em;
 }
 
+#announcement-container {
+  position: absolute;
+  z-index: 5;
+  margin: 50px;
+  width: 25vw;
+  height: 15vw;
+  background-color: var(--secondary-color);
+  border: 3px solid seashell;
+}
+
+#announcement {
+  position: relative;
+  color: white;
+  text-align: center;
+  margin-top: 40%;
+  word-break: break-all;
+}
+
+.hidden {
+  display: none;
+}
+
 @media only screen and (min-width: 992px) {
   h1 {
     font-size: 7em;

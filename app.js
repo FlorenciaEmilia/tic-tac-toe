@@ -19,6 +19,9 @@ let userScore = 0;
 const computerScoreSelector = document.querySelector("#o-score");
 let computerScore = 0;
 
+const announcementDiv = document.querySelector("#announcement-container");
+const announcement = document.querySelector("#announcement h3");
+
 function xs(event) {
   event.disabled = true;
   const node = document.createTextNode("x");
@@ -176,6 +179,16 @@ function winChecker(letter) {
   diagonalChecker(letter);
 }
 
+function announcementShow(letter) {
+  announcementDiv.classList.toggle("hidden");
+  announcement.textContent = `${letter} won!`;
+}
+
+function caseWin(letter) {
+  announcementShow(letter);
+  setTimeout(announcementShow, 1000);
+}
+
 function verticalChecker(letter) {
   for (let i = 0; i < ticTacToe.length; i++) {
     let checker = [];
@@ -187,8 +200,8 @@ function verticalChecker(letter) {
       }
     }
     if (checker.length === 3) {
-      alert(letter + " won");
-
+      //Make announcement appear and then make it go away in 2 seconds or so
+      caseWin(letter);
       winDisplay(rowIndex);
       scores(letter);
       //clearTimeout(oTimer)
@@ -201,7 +214,7 @@ function horizontalChecker(letter) {
   let checker = ticTacToe.map((x) => x.every((y) => y == letter));
 
   if (checker.indexOf(true) !== -1) {
-    alert(letter + " won");
+    caseWin(letter);
     let horizontalIndex = (checker.indexOf(true) + "")
       .repeat(3)
       .split("")
@@ -225,7 +238,7 @@ function diagonalChecker(letter) {
     ticTacToe[2][0],
   ].every((x) => x == letter);
   if (firstDiagonal || secondDiagonal) {
-    alert(letter + " won");
+    caseWin(letter);
     scores(letter);
     if (firstDiagonal) {
       winDisplay([
@@ -252,6 +265,7 @@ function winDisplay(indexDirections) {
       ticTacToeDisplay[indexDirections[i][0]][0][indexDirections[i][1]]
     );
   }
+
   myNodeList.forEach((x) => (x.style.color = "#a4aeb0"));
   myNodeList.forEach((x) => (x.disabled = true));
   winIndexes.forEach((x) => (x.style.color = "#eb2f06"));
