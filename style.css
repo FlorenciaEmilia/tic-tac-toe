@@ -95,11 +95,14 @@ button:disabled {
   height: 15vw;
   background-color: var(--third-color);
   border: 3px solid var(--main-color);
+  transform: scale(0.5);
+  animation: 0.5s slideIn ease-in-out forwards, 0.5s skewBg ease-in-out;
 }
 
 #announcement {
   position: relative;
   font-family: var(--main-font);
+  font-weight: lighter;
   letter-spacing: 1px;
   color: var(--main-color);
   text-align: center;
@@ -112,6 +115,23 @@ button:disabled {
 
 .hidden {
   display: none;
+}
+
+@keyframes skewBg {
+  0% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 @media only screen and (min-width: 992px) {

@@ -186,7 +186,7 @@ function announcementShow(letter) {
 
 function caseWin(letter) {
   announcementShow(letter);
-  setTimeout(announcementShow, 1000);
+  setTimeout(announcementShow, 1500);
 }
 
 function verticalChecker(letter) {
