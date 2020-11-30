@@ -93,8 +93,9 @@ button:disabled {
   margin-left: auto;
   margin-right: auto;
   height: 15vw;
-  background-color: var(--third-color);
+  background-color: var(--secondary-color);
   border: 3px solid var(--main-color);
+  border-radius: 5px;
   transform: scale(0.5);
   animation: 0.5s slideIn ease-in-out forwards, 0.5s skewBg ease-in-out;
 }
