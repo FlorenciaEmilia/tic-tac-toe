@@ -38,7 +38,6 @@ function xs(event) {
   if (!allSlotsTaken) {
     //Disable everything if is not game over so the user doesn't click while setTimeout acts
     myNodeList.forEach((x) => (x.disabled = true));
-    // oTimer = setTimeout(os, 1000, this.event.target);
     oTimer = setTimeout(os, 1000, this.event.target);
   } else {
     playAgain = setTimeout(restartGame, 1500);
@@ -51,7 +50,6 @@ function os() {
   const node = document.createTextNode("o");
   //Predict a spot that will stop the user from winning
 
-  //stop propagation
   let index1 = null;
   let index2 = null;
   let moveHorizontalChecker = moveHorizontal();
@@ -59,20 +57,15 @@ function os() {
   let moveDiagonalChecker = moveDiagonal();
 
   if (moveHorizontalChecker !== undefined) {
-    console.log("horizontal condition was used");
-
     index1 = moveHorizontalChecker[0];
     index2 = moveHorizontalChecker[1];
   } else if (moveVerticalChecker !== undefined) {
-    console.log("vertical condition was used");
     index1 = moveVerticalChecker[0];
     index2 = moveVerticalChecker[1];
   } else if (moveDiagonalChecker !== undefined) {
-    console.log("diagonal condition was used");
     index1 = moveDiagonalChecker[0];
     index2 = moveDiagonalChecker[1];
   } else {
-    console.log("else condition was used");
     index1 = Math.floor(Math.random() * 3);
     index2 = Math.floor(Math.random() * 3);
 
@@ -203,11 +196,9 @@ function verticalChecker(letter) {
       }
     }
     if (checker.length === 3) {
-      //Make announcement appear and then make it go away in 2 seconds or so
       caseWin(letter);
       winDisplay(rowIndex);
       scores(letter);
-      //clearTimeout(oTimer)
     }
   }
 }
@@ -256,10 +247,8 @@ function diagonalChecker(letter) {
         [2, 0],
       ]);
     }
-    //clearTimeout(oTimer)
   }
 }
-//Set time out after 2 seconds to play again
 let playAgain;
 function winDisplay(indexDirections) {
   let winIndexes = [];
@@ -286,7 +275,6 @@ function restartGame() {
     }
   }
   myNodeList.forEach((x) => (x.disabled = false));
-  //Clear all ticTacToe Array
 }
 function scores(winner) {
   if (winner == "x") {
@@ -326,6 +314,5 @@ myNodeList.forEach((x) =>
 );
 
 const resetButtonListener = resetButton.addEventListener("click", () => {
-  console.log("reseting connected");
   resetGame();
 });
