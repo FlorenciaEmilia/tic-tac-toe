@@ -22,8 +22,11 @@ let computerScore = 0;
 const announcementDiv = document.querySelector("#announcement-container");
 const announcement = document.querySelector("#announcement h3");
 
+const resetButton = document.querySelector("#reset");
+
 function xs(event) {
   event.disabled = true;
+
   const node = document.createTextNode("x");
   event.appendChild(node);
   let arrayChange = event.getAttribute("value").split("");
@@ -295,7 +298,34 @@ function scores(winner) {
   computerScoreSelector.innerHTML = computerScore;
 }
 
+function resetGame() {
+  clearTimeout(oTimer);
+
+  for (let i = 0; i < ticTacToe.length; i++) {
+    for (let j = 0; j < ticTacToe[i].length; j++) {
+      ticTacToe[i][j] = null;
+    }
+  }
+
+  for (let i = 0; i < ticTacToeDisplay.length; i++) {
+    for (let j = 0; j < ticTacToeDisplay[i].length; j++) {
+      for (let k = 0; k < ticTacToeDisplay[i][j].length; k++) {
+        ticTacToeDisplay[i][j][k].innerHTML = "";
+        ticTacToeDisplay[i][j][k].disabled = false;
+      }
+    }
+  }
+  userScore = 0;
+  computerScore = 0;
+  userScoreSelector.innerHTML = userScore;
+  computerScoreSelector.innerHTML = computerScore;
+}
 const myNodeList = document.querySelectorAll(".row button");
 myNodeList.forEach((x) =>
   x.addEventListener("click", (x) => xs(this.event.target))
 );
+
+const resetButtonListener = resetButton.addEventListener("click", () => {
+  console.log("reseting connected");
+  resetGame();
+});
