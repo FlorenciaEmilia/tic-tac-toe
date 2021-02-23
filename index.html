@@ -6,18 +6,9 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap"
-      rel="stylesheet"
-    />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Raleway:wght@700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -27,40 +18,60 @@
     />
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
-    <div class="body-display">
+    <div id="game-container">
+      <div id="title">
+        <h1>Tic Tac Toe</h1>
+        <h1>Tic Tac Toe</h1>
+      </div>
+
+      <div class="body-display">
+        <div class="tic-tac-toe">
+          <div id="first-row" class="row">
+            <button class="ttt-button" id="firstRowOne" value="00"></button>
+            <button class="ttt-button" id="firstRowTwo" value="01"></button>
+            <button class="ttt-button" id="firstRowThree" value="02"></button>
+          </div>
+
+          <div id="second-row" class="row">
+            <button class="ttt-button" id="secondRowOne" value="10"></button>
+            <button class="ttt-button" id="secondRowTwo" value="11"></button>
+            <button class="ttt-button" id="secondRowThree" value="12"></button>
+          </div>
+
+          <div id="third-row" class="row">
+            <button class="ttt-button" id="thirdRowOne" value="20"></button>
+            <button class="ttt-button" id="thirdRowTwo" value="21"></button>
+            <button class="ttt-button" id="thirdRowThree" value="22"></button>
+          </div>
+        </div>
+
+        <!-- <div class="scores">
+          <div>
+            <h2>Your Score:<span id="x-score">0</span></h2>
+          </div> -->
+
+        <!-- <div>
+            <h2>Computer Score:<span id="o-score">0</span></h2>
+          </div>
+          <button id="reset">Play Again!</button>
+        </div>
+        <div id="announcement-container" class="hidden">
+          <div id="announcement">
+            <h3></h3>
+          </div>
+        </div> -->
+      </div>
       <div class="tic-tac-toe">
-        <div id="first-row" class="row">
-          <button id="firstRowOne" value="00"></button>
-          <button id="firstRowTwo" value="01"></button>
-          <button id="firstRowThree" value="02"></button>
-        </div>
-
-        <div id="second-row" class="row">
-          <button id="secondRowOne" value="10"></button>
-          <button id="secondRowTwo" value="11"></button>
-          <button id="secondRowThree" value="12"></button>
-        </div>
-
-        <div id="third-row" class="row">
-          <button id="thirdRowOne" value="20"></button>
-          <button id="thirdRowTwo" value="21"></button>
-          <button id="thirdRowThree" value="22"></button>
-        </div>
+        <button id="reset">Play Again</button>
       </div>
-      <div class="scores">
-        <div>
-          <h2>Your Score:<span id="x-score">0</span></h2>
-        </div>
+    </div>
 
+    <div id="game-info">
+      <div id="game-info-container">
+        <h3 id="announcement"></h3>
         <div>
-          <h2>Computer Score:<span id="o-score">0</span></h2>
-        </div>
-        <button id="reset">Play Again!</button>
-      </div>
-      <div id="announcement-container" class="hidden">
-        <div id="announcement">
-          <h3></h3>
+          <p>Your Score:<span id="x-score">0</span></p>
+          <p>Computer Score:<span id="o-score">0</span></p>
         </div>
       </div>
     </div>

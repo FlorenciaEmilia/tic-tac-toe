@@ -1,188 +1,146 @@
 :root {
-  --main-color: #d8e6e8;
-  --secondary-color: #1b7380;
-  --third-color: #0a3238;
-  --main-font: "Open Sans", sans-serif;
-  --title-font: "Limelight", cursive;
+  --main-color: #e389c5;
+  --secondary-color: #fd6e54;
+  --third-color: #af52ab;
+  --stroke-color: #000000;
+  --fill-color: #ffffff;
+  --button-color: #813868;
+  --main-font: "Raleway", sans-serif;
+  --secondary-font: "Montserrat", sans-serif;
 }
 
 body {
-  display: block;
   margin: 0;
-  background-color: var(--main-color);
-  color: var(--secondary-color);
-  margin: 2em;
-  border: 5px solid var(--secondary-color);
-  padding: 2em;
-}
-
-h2 {
+  padding: 0;
   font-family: var(--main-font);
-}
-h1 {
-  font-family: "Limelight", cursive;
-  text-align: center;
-  font-size: 6em;
-  font-weight: lighter;
-  margin: 0;
-  border-bottom: 5px solid var(--title-font);
-}
-.body-display {
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  margin-left: -1.5em;
-  flex-direction: column;
-  align-content: center;
-}
-.tic-tac-toe {
-  padding: 1em;
-  margin: auto;
-}
-.row {
-  display: flex;
-}
-
-.row div,
-.row button {
-  width: 12vw;
-  height: 12vw;
-  border: none;
-  font-size: 5vw;
-  text-align: center;
-  font-family: "Architects Daughter", cursive;
-  border: 5px solid var(--secondary-color);
   background-color: var(--main-color);
 }
 
-button {
-  font-family: "Architects Daughter", cursive;
-}
-
-button:disabled {
-  box-sizing: border-box;
-  color: #0a3d62;
-}
-.font {
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.scores {
-  padding: 0 3em;
-  margin: auto;
-}
-
-.scores h2 {
-  font-family: "PT Serif Caption", serif;
-  letter-spacing: 0.1em;
-}
-
-#x-score,
-#o-score {
-  padding: 0 0.5em;
-}
-
-#announcement-container {
+#game-container {
   position: absolute;
-  z-index: 5;
-  width: 50vw;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 40vh;
-  height: 35vw;
-  background-color: var(--secondary-color);
-  border: 3px solid var(--main-color);
-  border-radius: 5px;
-  transform: scale(0.5);
-  animation: 0.5s slideIn ease-in-out forwards, 0.5s skewBg ease-in-out;
+  left: 30%;
+  z-index: -10;
 }
 
-#announcement {
-  position: relative;
-  font-family: var(--main-font);
-  font-weight: lighter;
-  letter-spacing: 1px;
-  color: var(--main-color);
+/* title */
+
+h1 {
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: black;
+  font-size: 100px;
   text-align: center;
-  word-break: break-all;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  transition: 0.55s;
+  line-height: 0;
+  white-space: nowrap;
 }
 
-.hidden {
+#title {
+  padding: 0;
+}
+
+h1:nth-of-type(1) {
+  -webkit-text-fill-color: var(--third-color);
+  margin-right: 5px;
+}
+h1:nth-of-type(2) {
+  -webkit-text-fill-color: var(--secondary-color);
+  margin-top: -75px;
+}
+
+/* Tic Tac Toe */
+.tic-tac-toe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.ttt-button {
+  min-width: 150px;
+  min-height: 150px;
+  margin: 0.2em;
+  border: 4px solid black;
+  box-shadow: -7px 7px 0px 1px #af52ab, -7px 7px 0px 4px black;
+  background-color: var(--fill-color);
+  font-family: var(--main-font);
+  font-size: 100px;
+  line-height: 0;
+  vertical-align: top;
+}
+
+.ttt-button:disabled,
+.ttt-button[disabled] {
+  background-color: var(--fill-color);
+  color: var(--stroke-color);
+}
+
+/*Play Button*/
+#reset {
+  min-width: 200px;
+  padding: 0.3em;
+  margin: 1em;
+  background-color: var(--main-color);
+  border: 4px solid var(--button-color);
+  font-family: var(--main-font);
+  letter-spacing: 1px;
+  color: var(--button-color);
+  font-size: 25px;
+  box-shadow: -7px 7px 0px 1px var(--main-color),
+    -7px 7px 0px 4px var(--button-color);
   display: none;
 }
 
-#reset {
-  border: 0.2em solid var(--secondary-color);
-  border-radius: 5px;
-  padding: 1em 2em;
-  background-color: var(--main-color);
-  font-family: var(--main-font);
-  color: var(--secondary-color);
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  font-size: 1em;
-  outline: none;
-  cursor: pointer;
-  margin: 0 auto;
-  display: block;
-  transition: 0.55s;
-}
-
-#reset:hover,
-#reset:focus {
-  box-shadow: inset 0 0 0 2em var(--secondary-color);
+#reset:hover {
+  background-color: var(--button-color);
   color: var(--main-color);
+  transition: background-color 0.35s ease-in-out;
 }
-@keyframes skewBg {
+
+/* Game Info */
+#game-info {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  background-color: var(--secondary-color);
+  z-index: 100;
+  /* Testing animation */
+  animation: move 7s ease-in-out;
+  justify-content: center;
+  display: none;
+  /* This will change with JS */
+}
+
+#game-info-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  font-family: var(--secondary-font);
+  text-transform: uppercase;
+  font-size: 100px;
+  margin: 0;
+}
+#game-info p {
+  font-size: 30px;
+}
+
+/* Animation */
+@-webkit-keyframes move {
   0% {
-    transform: scale(0.5);
+    left: -100%;
+  }
+
+  50% {
+    left: 0%;
   }
 
   100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideIn {
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  h1 {
-    font-size: 7em;
-  }
-  .body-display {
-    width: 70%;
-    flex-direction: row;
-    margin: 2em auto 0 auto;
-  }
-
-  .row button {
-    width: 9vw;
-    height: 9vw;
-  }
-
-  .tic-tac-toe {
-    padding: 1em 3em;
-    margin: auto;
-  }
-
-  #announcement-container {
-    width: 25vw;
-    height: 15vw;
-  }
-  #reset {
-    margin: 0;
+    left: 100%;
+    display: none;
   }
 }
