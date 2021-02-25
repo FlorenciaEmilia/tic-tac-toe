@@ -20,6 +20,10 @@ body {
   position: absolute;
   left: 30%;
   z-index: -10;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* title */
@@ -52,6 +56,7 @@ h1:nth-of-type(2) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   white-space: nowrap;
 }
 
@@ -142,5 +147,90 @@ h3 {
   100% {
     left: 100%;
     display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  h1 {
+    font-size: 75px;
+    line-height: 100%;
+  }
+
+  h1:nth-of-type(1) {
+    -webkit-text-fill-color: var(--third-color);
+    margin-right: 13px;
+  }
+  h1:nth-of-type(2) {
+    -webkit-text-fill-color: var(--secondary-color);
+    margin-top: -125px;
+  }
+
+  .ttt-button {
+    min-width: 125px;
+    min-height: 125px;
+  }
+
+  h3 {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ttt-button {
+    min-width: 100px;
+    min-height: 100px;
+    margin: 10px;
+  }
+
+  h1 {
+    white-space: normal;
+  }
+
+  h1:nth-of-type(1) {
+    -webkit-text-fill-color: var(--third-color);
+    margin-right: 13px;
+  }
+  h1:nth-of-type(2) {
+    -webkit-text-fill-color: var(--secondary-color);
+    margin-top: -130px;
+  }
+
+  h3 {
+    font-size: 25px;
+  }
+
+  #game-info p {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .ttt-button {
+    min-width: 60px;
+    min-height: 60px;
+    margin: 10px;
+    font-size: 40px;
+  }
+
+  h1 {
+    white-space: normal;
+  }
+
+  h1:nth-of-type(1) {
+    display: none;
+  }
+  h1:nth-of-type(2) {
+    display: block;
+    -webkit-text-fill-color: var(--secondary-color);
+    margin-top: 50px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  #reset {
+    margin-top: 40px;
+    font-size: 20px;
   }
 }

@@ -177,16 +177,6 @@ function winChecker(letter) {
   diagonalChecker(letter);
 }
 
-// function announcementShow(letter) {
-//   announcementDiv.classList.toggle("hidden");
-//   announcement.textContent = `${letter} won!`;
-// }
-
-// function caseWin(letter) {
-//   announcementShow(letter);
-//   setTimeout(announcementShow, 1500);
-// }
-
 function verticalChecker(letter) {
   for (let i = 0; i < ticTacToe.length; i++) {
     let checker = [];
@@ -301,7 +291,7 @@ function winAnnouncement(letter) {
 function restartGame() {
   //CLear all slots
   myNodeList.forEach((x) => (x.innerText = ""));
-  myNodeList.forEach((x) => (x.style.color = " #0a3d62"));
+  myNodeList.forEach((x) => (x.style.color = " #000000"));
   for (let i = 0; i < ticTacToe.length; i++) {
     for (let j = 0; j < ticTacToe[i].length; j++) {
       ticTacToe[i][j] = null;
@@ -309,15 +299,6 @@ function restartGame() {
   }
   myNodeList.forEach((x) => (x.disabled = false));
 }
-// function scores(winner) {
-//   if (winner == "x") {
-//     userScore++;
-//   } else {
-//     computerScore++;
-//   }
-//   userScoreSelector.innerHTML = userScore;
-//   computerScoreSelector.innerHTML = computerScore;
-// }
 
 function resetGame() {
   clearTimeout(oTimer);
@@ -336,10 +317,11 @@ function resetGame() {
       }
     }
   }
-  // userScore = 0;
-  // computerScore = 0;
-  // userScoreSelector.innerHTML = userScore;
-  // computerScoreSelector.innerHTML = computerScore;
+  userScore = 0;
+  computerScore = 0;
+  userScoreSelector.innerHTML = userScore;
+  computerScoreSelector.innerHTML = computerScore;
+  resetButton.style.display = "none";
 }
 const myNodeList = document.querySelectorAll(".row button");
 myNodeList.forEach((x) =>
